@@ -1,4 +1,27 @@
+<style>
+      #submit_button{
+        background-color: #282828; color: pink; border-radius: 5px; border-color: pink; padding: 10px;;
+    }
+</style>
+
+{% extends 'layout.html' %}
+
+
 {% block content %}
-<h2>index(목록)화면임</h2>
-<a href="{% url 'SolveQuiz' %}"><button >퀴즈풀기</button></a>
-{%  endblock %}
+    <br/>
+<h2 style="color: #ffffff">퀴즈 목록</h2>
+    <br/>
+    <p style="color: gray; font-weight: lighter; font-size: 10px">현재 플레이어의 등록된 퀴즈를 보여주는 페이지 입니다. 졸립다. ㅇㅈ<br/>
+    사실 이 글은 큰 의미 없고 그냥 디자인상 예뻐 보이고 싶은 건 알겠는데 이거 너무 어려워요</p>
+    <br/><br/>
+    <h4>| 현재 사용자: {{ user }}</h4>
+    <br/>
+    <hr style="width: 1300px;border-color: pink; margin-left: 0px;">
+
+    <br/>
+    {% for list in lists %}
+    <div>
+        <a href="{% url 'piroquiz:SolveQuiz' pk=list.pk %} ">{{ list }}</a>
+    </div>
+    {% endfor %}
+{% endblock %}

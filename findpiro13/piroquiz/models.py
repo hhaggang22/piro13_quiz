@@ -1,11 +1,21 @@
 from django.db import models
 
 # Create your models here.
-class Quiz(models.Model):
-    quiz_title=models.CharField(max_length=800, verbose_name='퀴즈제목')
+class Answer(models.Model):
+    title = models.CharField(max_length=255)
+    #create_by = models.CharField(max_length=255)
+    schoolans = models.CharField(max_length=255)
+    foodans = models.CharField(max_length=255)
 
-class CreateQuiz(models.Model):
-    title = models.CharField(max_length = 255, verbose_name='제목')
+    def __str__(self):
+        return self.title
+
+
+class Correct(models.Model):
+    title = models.OneToOneField(Answer, on_delete=models.CASCADE)
+    #create_by = models.OneToOneField(Answer, on_delete=models.CASCADE)
+    schoolans = models.CharField(max_length=255)
+    foodans = models.CharField(max_length=255)
 
 
 
